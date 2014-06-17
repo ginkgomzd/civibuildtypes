@@ -59,5 +59,14 @@ pushd "${WEB_ROOT}/sites/${DRUPAL_SITE_DIR}" >> /dev/null
   drush -y cvapi extension.install key=org.civicrm.volunteer
   drush -y role-add-perm 'anonymous user' 'register to volunteer'
 
+  ## Enable CiviCRM Multiform
+  drush -y cvapi extension.install key=com.ginkgostreet.multiform
+
+  ## handy links
+  pushd "${WEB_ROOT}/.." >>/dev/null
+  ln -s "${WEB_ROOT}/sites/${DRUPAL_SITE_DIR}/files/civicrm/tools/extensions/civivolunteer" org.civicrm.volunteer
+  ln -s "${WEB_ROOT}/sites/${DRUPAL_SITE_DIR}/files/civicrm/tools/extensions/com.ginkgosreet.multiform" com.ginkgosreet.multiform
+  popd >>/dev/null
+
 popd >> /dev/null
 
